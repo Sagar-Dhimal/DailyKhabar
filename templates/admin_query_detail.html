@@ -1,0 +1,67 @@
+{% extends "admin_base.html" %}
+{% block admin_content %}
+<div class="admin-hero">
+  <div class="admin-hero-copy">
+    <span class="admin-kicker">Query Details</span>
+    <h1>Message from {{ query.name }}</h1>
+    <p>Review the inquiry and formulate a response.</p>
+  </div>
+  <div class="admin-hero-tools">
+    <a href="{{ url_for('admin_queries') }}" class="admin-toolbar-btn">
+      <i class="bi bi-arrow-left"></i> Return to Queries
+    </a>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-7">
+    <div class="admin-panel mb-4">
+      <div class="admin-panel-header">
+        <h2>Reader Message</h2>
+        <span>Received {{ query.created_at[:10] }}</span>
+      </div>
+      <div class="admin-panel-body">
+        <div class="p-4 bg-light rounded-4 border">
+          <p class="mb-0 lead-sm">{{ query.message }}</p>
+        </div>
+        <div class="mt-4 pt-4 border-top">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <small class="text-muted text-uppercase fw-bold d-block mb-1">Email Address</small>
+              <strong>{{ query.email }}</strong>
+            </div>
+            <div class="col-sm-6">
+              <small class="text-muted text-uppercase fw-bold d-block mb-1">Status</small>
+              <span class="admin-status-pill {% if query.status == 'answered' %}status-green{% else %}status-blue{% endif %}">
+                {{ query.status|capitalize }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="admin-panel h-100">
+      <div class="admin-panel-header">
+        <h2>Compose Reply</h2>
+      </div>
+      <div class="admin-panel-body">
+        <form action="{{ url_for('admin_query_reply', query_id=query.id) }}" method="post">
+          <div class="mb-3">
+            <label class="form-label fw-bold">Your Response</label>
+            <textarea name="reply_content" class="form-control" rows="10" placeholder="Hello {{ query.name }}, ...">{% if query.admin_reply %}{{ query.admin_reply }}{% endif %}</textarea>
+          </div>
+          <div class="admin-note mb-4">
+            <i class="bi bi-info-circle-fill admin-note-icon"></i>
+            <p>Outgoing email functionality is currently in development mode. Replies will be saved locally.</p>
+          </div>
+          <button type="submit" class="admin-toolbar-btn primary w-100 justify-content-center">
+            <i class="bi bi-send-fill"></i> Dispatch Reply
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

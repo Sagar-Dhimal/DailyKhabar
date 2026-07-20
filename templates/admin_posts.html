@@ -1,0 +1,102 @@
+{% extends "admin_base.html" %}
+{% block admin_content %}
+<div class="admin-hero">
+  <div class="admin-hero-copy">
+    <span class="admin-kicker">Content Management</span>
+    <h1>Manage Posts</h1>
+    <p>Browse, edit, and manage all news articles in the system inventory.</p>
+  </div>
+  <div class="admin-hero-tools">
+    <a href="{{ url_for('admin_post_create') }}" class="admin-toolbar-btn primary">
+      <i class="bi bi-plus-lg"></i> New Post
+    </a>
+  </div>
+</div>
+
+<div class="admin-panel admin-table-panel">
+  <div class="admin-table-toolbar d-flex flex-wrap gap-3 align-items-center justify-content-between w-100">
+    <form action="{{ url_for('admin_posts') }}" method="GET" class="d-flex gap-3 align-items-center flex-grow-1">
+      <div class="admin-table-search flex-grow-1">
+        <div class="admin-search">
+          <i class="bi bi-search"></i>
+          <input type="text" name="q" value="{{ query }}" placeholder="Search by title or content...">
+        </div>
+      </div>
+      <div class="admin-table-filter">
+        <select name="category" class="form-select admin-select-filter" onchange="this.form.submit()">
+          <option value="">All Categories</option>
+          {% for cat in categories %}
+          <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="admin-toolbar-btn">Filter</button>
+      {% if query or selected_category %}
+      <a href="{{ url_for('admin_posts') }}" class="admin-toolbar-btn danger" title="Clear Filters">
+        <i class="bi bi-x-lg"></i>
+      </a>
+      {% endif %}
+    </form>
+    
+    <button type="button" class="admin-toolbar-btn danger" onclick="submitBulkDelete()">
+      <i class="bi bi-trash-fill"></i> Bulk Delete
+    </button>
+  </div>
+  
+  <form action="{{ url_for('admin_posts_bulk_delete') }}" method="POST" id="bulkDeleteForm">
+    <div class="admin-responsive-table">
+      <table class="admin-data-table">
+        <thead>
+          <tr>
+            <th style="width: 40px; text-align: center;">
+              <input type="checkbox" id="selectAll" class="form-check-input" onchange="toggleSelectAll(this)">
+            </th>
+            <th>ID</th>
+            <th>Article Title</th>
+            <th>Category</th>
+            <th>Published Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for p in posts %}
+        <tr>
+          <td style="text-align: center;">
+            <input type="checkbox" name="article_ids" value="{{ p.article_id }}" class="form-check-input post-checkbox">
+          </td>
+          <td>#{{ p.article_id }}</td>
+          <td><strong>{{ p.title[:70] }}...</strong></td>
+          <td><span class="admin-category-chip">{{ p.category }}</span></td>
+          <td><span class="admin-date-chip">{{ (p.published_at)[:10] if p.published_at else 'N/A' }}</span></td>
+          <td>
+            <div class="d-flex gap-2">
+              <a href="{{ url_for('article_detail', article_id=p.article_id) }}" class="admin-icon-action view" title="View"><i class="bi bi-eye"></i></a>
+              <a href="{{ url_for('admin_post_edit', article_id=p.article_id) }}" class="admin-icon-action edit" title="Edit"><i class="bi bi-pencil"></i></a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>
+
+<script>
+function toggleSelectAll(source) {
+  const checkboxes = document.querySelectorAll('.post-checkbox');
+  checkboxes.forEach(cb => cb.checked = source.checked);
+}
+
+function submitBulkDelete() {
+  const selected = document.querySelectorAll('.post-checkbox:checked');
+  if (selected.length === 0) {
+    alert("Please select at least one article to delete.");
+    return;
+  }
+  if (confirm(`Are you sure you want to permanently delete ${selected.length} article(s)?`)) {
+    document.getElementById('bulkDeleteForm').submit();
+  }
+}
+</script>
+{% endblock %}

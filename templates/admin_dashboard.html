@@ -1,0 +1,350 @@
+{% extends "admin_base.html" %}
+{% block admin_content %}
+<div class="admin-hero">
+  <div class="admin-hero-copy">
+    <span class="admin-kicker">DAILY KHABAR CONTROL CENTER <i class="bi bi-speedometer"></i></span>
+    <h1>Dashboard</h1>
+    <p>Monitor news posts, categories, comments, queries, and ML model health from one polished workspace.</p>
+  </div>
+  <div class="admin-hero-tools">
+    <a href="{{ url_for('admin_dataset_sync') }}" class="admin-toolbar-btn">
+      <i class="bi bi-arrow-repeat"></i> Sync
+    </a>
+    <a href="{{ url_for('index') }}" class="admin-toolbar-btn primary">
+      <i class="bi bi-globe"></i> View Site
+    </a>
+  </div>
+</div>
+
+<div class="admin-stats-grid">
+  <div class="admin-stat-card stat-orange">
+    <strong>{{ stats.unread_queries }}</strong>
+    <span>Total Unread Queries</span>
+    <small>Needs response</small>
+    <i class="bi bi-envelope stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+  <div class="admin-stat-card stat-blue">
+    <strong>{{ stats.read_queries }}</strong>
+    <span>Total Read Queries</span>
+    <small>Handled messages</small>
+    <i class="bi bi-send stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+  <div class="admin-stat-card stat-purple">
+    <strong>{{ stats.pending_comments }}</strong>
+    <span>Total New Comments</span>
+    <small>Awaiting moderation</small>
+    <i class="bi bi-chat-dots stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+  <div class="admin-stat-card stat-green">
+    <strong>{{ stats.approved_comments }}</strong>
+    <span>Total Approved Comments</span>
+    <small>Visible publicly</small>
+    <i class="bi bi-check2-all stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+  <div class="admin-stat-card stat-cyan stat-wide">
+    <strong>{{ stats.total_categories }}</strong>
+    <span>Total Category</span>
+    <small>Editorial sections</small>
+    <i class="bi bi-folder-symlink stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+  <div class="admin-stat-card stat-red stat-wide">
+    <strong>{{ stats.total_posts }}</strong>
+    <span>Total News Post</span>
+    <small>Published inventory</small>
+    <i class="bi bi-newspaper stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+</div>
+
+<div class="admin-quick-head">
+  <h2><i class="bi bi-lightning-fill text-primary"></i> Quick Actions</h2>
+  <span>Most used shortcuts</span>
+</div>
+<div class="admin-quick-actions">
+  <a href="{{ url_for('admin_post_create') }}" class="admin-action primary">
+    <i class="bi bi-plus-lg"></i> New Post
+  </a>
+  <a href="{{ url_for('admin_categories') }}" class="admin-action">
+    <i class="bi bi-folder-plus"></i> New Category
+  </a>
+  <a href="{{ url_for('admin_comments') }}" class="admin-action">
+    <i class="bi bi-chat-dots"></i> Review Comments
+  </a>
+  <a href="{{ url_for('admin_queries') }}" class="admin-action">
+    <i class="bi bi-envelope"></i> Check Queries
+  </a>
+</div>
+
+<div class="admin-panel-grid">
+  <div class="admin-panel">
+    <div class="admin-panel-header">
+      <h2><i class="bi bi-bar-chart-line"></i> Insights</h2>
+      <span>Overview</span>
+    </div>
+    <div class="admin-panel-body">
+      <div class="admin-ml-grid">
+        <div class="admin-metric">
+          <div class="admin-score-ring" style="--score: {{ stats.classifier_acc }};">
+            <span>{{ stats.classifier_acc }}%</span>
+          </div>
+          <span>Classification Accuracy</span>
+          <small>Model Confidence</small>
+        </div>
+        <div class="admin-metric">
+          <div class="admin-score-ring" style="--score: {{ stats.summary_acc }};">
+            <span>{{ stats.summary_acc }}%</span>
+          </div>
+          <span>Summary Accuracy</span>
+          <small>Model Confidence</small>
+        </div>
+      </div>
+      
+      <div class="admin-notes mt-4">
+        <div class="admin-panel border shadow-none mb-0">
+          <div class="admin-panel-header py-2 px-3 bg-light">
+            <h3 class="admin-card-title small mb-0">ML Training Report</h3>
+          </div>
+          <div class="admin-panel-body p-3">
+            <p class="mb-2"><strong>Training Data:</strong> {{ stats.training_data }} articles</p>
+            <p class="mb-0"><strong>Tested Data:</strong> {{ stats.testing_data }} articles</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-panel">
+    <div class="admin-panel-header">
+      <h2><i class="bi bi-bar-chart-fill"></i> Category Insights</h2>
+      <span>Number of articles</span>
+    </div>
+    <div class="admin-panel-body">
+      <canvas id="categoryChart" 
+              style="max-height: 350px;"
+              data-labels='{{ chart_labels|tojson|safe }}'
+              data-values='{{ chart_values|tojson|safe }}'></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ── ML Metrics: Confusion Matrix + Per-class Stats ── -->
+<div class="admin-section-head mt-4">
+  <h2><i class="bi bi-grid-3x3"></i> ML Classification Metrics</h2>
+  <span>Confusion matrix &amp; per-class performance</span>
+</div>
+
+<div class="admin-panel-grid">
+  <!-- Confusion Matrix Heatmap -->
+  <div class="admin-panel">
+    <div class="admin-panel-header">
+      <h2><i class="bi bi-table"></i> Confusion Matrix</h2>
+      <span>Overall accuracy: <strong>{{ cm_data.overall_acc }}%</strong></span>
+    </div>
+    <div class="admin-panel-body">
+      <div class="cm-wrapper">
+        <table class="cm-table">
+          <thead>
+            <tr>
+              <th class="cm-corner">Actual ╲ Predicted</th>
+              {% for cat in cm_data.categories %}
+              <th>{{ cat }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for r_idx in range(cm_data.matrix|length) %}
+            <tr>
+              <th class="cm-row-label">{{ cm_data.categories[r_idx] }}</th>
+              {% set row_total = cm_data.matrix[r_idx] | sum %}
+              {% for val in cm_data.matrix[r_idx] %}
+              {% set intensity = (val / row_total * 100) | int if row_total > 0 else 0 %}
+              <td class="cm-cell {% if loop.index0 == r_idx %}cm-diag{% endif %}"
+                  style="--intensity: {{ intensity }};">
+                {{ val }}
+              </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Per-class Precision / Recall / F1 -->
+  <div class="admin-panel">
+    <div class="admin-panel-header">
+      <h2><i class="bi bi-clipboard-data"></i> Per-Class Metrics</h2>
+      <span>Precision · Recall · F1</span>
+    </div>
+    <div class="admin-panel-body">
+      <table class="cm-metrics-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1</th>
+            <th>Support</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in cm_data.per_class %}
+          <tr>
+            <td><strong>{{ row.category }}</strong></td>
+            <td>
+              <div class="cm-bar-wrap">
+                <div class="cm-bar cm-bar-precision" style="width:{{ row.precision }}%"></div>
+                <span>{{ row.precision }}%</span>
+              </div>
+            </td>
+            <td>
+              <div class="cm-bar-wrap">
+                <div class="cm-bar cm-bar-recall" style="width:{{ row.recall }}%"></div>
+                <span>{{ row.recall }}%</span>
+              </div>
+            </td>
+            <td>
+              <div class="cm-bar-wrap">
+                <div class="cm-bar cm-bar-f1" style="width:{{ row.f1 }}%"></div>
+                <span>{{ row.f1 }}%</span>
+              </div>
+            </td>
+            <td class="cm-support">{{ row.support }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js and Initialization -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('categoryChart');
+    const ctx = canvas.getContext('2d');
+    
+    // Parse data from data-attributes (IDE friendly)
+    const labels = JSON.parse(canvas.getAttribute('data-labels'));
+    const values = JSON.parse(canvas.getAttribute('data-values'));
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Number of articles',
+                data: values,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                borderRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 50
+                    },
+                    grid: {
+                        drawBorder: false,
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        usePointStyle: true,
+                        boxWidth: 10
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+
+<style>
+/* ── Section heading ── */
+.admin-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 0 0.5rem;
+  border-top: 2px solid #e9ecef;
+}
+.admin-section-head h2 { font-size: 1.1rem; margin: 0; }
+.admin-section-head span { color: #6c757d; font-size: 0.85rem; }
+
+/* ── Confusion Matrix table ── */
+.cm-wrapper { overflow-x: auto; }
+.cm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.cm-table th, .cm-table td {
+  padding: 8px 10px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+}
+.cm-table .cm-corner { text-align: left; font-style: italic; color: #6c757d; }
+.cm-table .cm-row-label { text-align: left; font-weight: 600; background: #f8f9fa; }
+/* Heat colouring: diagonal gets green tints, off-diagonal blue tints */
+.cm-cell {
+  background-color: rgb(54, 162, 235);
+  opacity: calc(0.45 + var(--intensity) / 100 * 0.55);
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.cm-diag {
+  background-color: rgb(40, 167, 69) !important;
+  opacity: calc(0.35 + var(--intensity) / 100 * 0.65);
+  color: #155724;
+}
+
+/* ── Per-class metrics table ── */
+.cm-metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.cm-metrics-table th, .cm-metrics-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+.cm-metrics-table thead th { background: #f8f9fa; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .05em; }
+.cm-bar-wrap { display: flex; align-items: center; gap: 6px; }
+.cm-bar {
+  height: 8px;
+  border-radius: 4px;
+  min-width: 4px;
+  transition: width 0.4s ease;
+}
+.cm-bar-precision { background: #4e9af1; }
+.cm-bar-recall    { background: #28a745; }
+.cm-bar-f1        { background: #fd7e14; }
+.cm-support { color: #6c757d; font-weight: 600; }
+</style>
+</div>
+{% endblock %}

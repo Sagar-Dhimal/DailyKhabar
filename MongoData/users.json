@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "69fdcf62bc505ca397e850ea",
+    "username": "user1",
+    "email": "user1@gmail.com",
+    "password": "scrypt:32768:8:1$ovzKZ3HDYA3vdGV5$571200b98f6239aface597beb8905cdf6cf19ee630aae864df8d97a9266650301ebe6e3029f657b637d7af293d9770ffbe708f22abbdd5ee0b780af0b0ded920",
+    "created_at": "2026-05-08T11:56:18+00:00"
+  },
+  {
+    "_id": "69fded08892577d6fdd95e7d",
+    "username": "user2",
+    "email": "user2@gmail.com",
+    "password": "scrypt:32768:8:1$WxoOpPjoPDe0JrXP$763a1403c6d7306e108fa1b8e01fdc9c568eefb3b85d91834989b48b7c64b660748f9e7f3144a05e3735478177f594df36a4292f65bb7df00db28625d0785657",
+    "created_at": "2026-05-08T14:02:48+00:00"
+  },
+  {
+    "_id": "69fdf0174ad1eaf8e4a3bd25",
+    "username": "user3",
+    "email": "user3@gmail.com",
+    "password": "scrypt:32768:8:1$jjL2dZD62wAjaFHZ$d1b2c997a4c78a1f875b6fbdc17200c2f297ca702dfb387b8e8de7640d2706bfa8fa820a0834ff1849b302bdc68e90c57eaf98a294357a8a51816233c383b1e6",
+    "created_at": "2026-05-08T14:15:51+00:00"
+  }
+]

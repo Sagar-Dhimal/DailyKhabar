@@ -1,0 +1,53 @@
+{% extends "admin_base.html" %}
+{% block admin_content %}
+<div class="admin-hero">
+  <div class="admin-hero-copy">
+    <span class="admin-kicker">Communication Hub</span>
+    <h1>Contact Queries</h1>
+    <p>Manage incoming inquiries and feedback from the portal users.</p>
+  </div>
+</div>
+
+<div class="admin-panel admin-table-panel">
+  <div class="admin-table-toolbar">
+    <div class="admin-table-search">
+      <div class="admin-search">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Search queries...">
+      </div>
+    </div>
+  </div>
+  <div class="admin-responsive-table">
+    <table class="admin-data-table">
+      <thead>
+        <tr>
+          <th>Sender</th>
+          <th>Email Address</th>
+          <th>Subject / Message</th>
+          <th>Received On</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for q in queries %}
+      <tr>
+        <td><strong>{{ q.name }}</strong></td>
+        <td><code class="small">{{ q.email }}</code></td>
+        <td><div class="text-truncate" style="max-width: 260px;">{{ q.message }}</div></td>
+        <td>{{ q.created_at[:10] }}</td>
+        <td>
+          <span class="admin-status-pill {% if q.status == 'answered' %}status-green{% else %}status-blue{% endif %}">
+            {{ q.status|capitalize }}
+          </span>
+        </td>
+        <td>
+          <a href="{{ url_for('admin_query_detail', query_id=q.id) }}" class="admin-icon-action view" title="Details"><i class="bi bi-envelope-open"></i></a>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

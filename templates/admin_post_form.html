@@ -1,0 +1,162 @@
+{% extends "admin_base.html" %}
+{% block admin_content %}
+<div class="admin-page-head mb-4">
+  <div class="admin-subpage-head">
+    <a href="{{ url_for('admin_posts') }}" class="admin-toolbar-btn mb-3">
+      <i class="bi bi-arrow-left"></i> Back to Posts
+    </a>
+    <h1><i class="bi bi-pencil-square"></i> {{ action }} Post</h1>
+  </div>
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+  <div class="admin-form-layout">
+    <div class="admin-form-stack">
+      <div class="admin-panel">
+        <div class="admin-panel-header">
+          <h2>Article Content</h2>
+        </div>
+        <div class="admin-panel-body">
+          <div class="admin-field mb-4">
+            <span>Article Title</span>
+            <input type="text" name="title" class="form-control form-control-lg" value="{{ post.title if post else '' }}" placeholder="Enter catchy title..." required>
+          </div>
+          
+
+          <div class="admin-field">
+            <span>Full Content</span>
+            <textarea name="content" class="form-control admin-editor" rows="12" placeholder="Write the complete article body here..." required>{{ post.full_content if post else '' }}</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-side-stack">
+      <div class="admin-panel">
+        <div class="admin-panel-body">
+          <div class="admin-field mb-4">
+            <span>Featured Image</span>
+            <input type="file" name="article_image" class="form-control" accept="image/*">
+            {% if post and post.url_to_image %}
+            <div class="mt-2">
+              <img src="{{ post.url_to_image }}" class="img-thumbnail" style="max-height: 100px;">
+              <div class="small text-muted mt-1">Current Image</div>
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="ai-prediction-box p-3 border rounded bg-light mb-3 text-center">
+            <span class="small text-muted d-block mb-1">Predicted Category</span>
+            <h3 id="ai-category" class="h4 fw-bold text-primary mb-1">{% if post %}{{ post.category }}{% else %}Waiting for input...{% endif %}</h3>
+            <div id="ai-accuracy-wrap" class="{% if not post %}d-none{% endif %}">
+              <span class="badge bg-success" id="ai-accuracy">{% if post %}{% if post.accuracy is defined %}{{ post.accuracy }}% Confidence{% else %}Dynamic Confidence{% endif %}{% else %}N/A{% endif %}</span>
+            </div>
+          </div>
+
+          <div class="ai-prediction-box p-3 border rounded bg-light mb-4">
+            <span class="small text-muted d-block mb-1 text-center">AI Summary Preview</span>
+            <div id="ai-summary-text" class="small mb-2" style="font-style: italic;">{% if post %}{{ post.summary }}{% else %}Summary will appear here...{% endif %}</div>
+            <div id="ai-summary-acc-wrap" class="text-center {% if not post %}d-none{% endif %}">
+              <span class="badge bg-info text-dark" id="ai-summary-acc">81.5% Accuracy</span>
+            </div>
+          </div>
+
+
+          <button type="submit" id="submit-btn" class="admin-toolbar-btn primary w-100 justify-content-center py-3">
+            <i class="bi bi-save"></i> Save & Publish
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-panel">
+        <div class="admin-panel-header">
+          <h2>Tips</h2>
+        </div>
+        <div class="admin-panel-body">
+          <ul class="admin-tip-list">
+            <li><i class="bi bi-check2 text-success me-2"></i> Use clear, factual titles.</li>
+            <li><i class="bi bi-check2 text-success me-2"></i> Ensure category matches content.</li>
+            <li><i class="bi bi-check2 text-success me-2"></i> Descriptions improve search.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contentArea = document.querySelector('textarea[name="content"]');
+    const aiCategory = document.getElementById('ai-category');
+    const aiAccuracy = document.getElementById('ai-accuracy');
+    const aiAccuracyWrap = document.getElementById('ai-accuracy-wrap');
+    
+    const aiSummaryText = document.getElementById('ai-summary-text');
+    const aiSummaryAcc = document.getElementById('ai-summary-acc');
+    const aiSummaryAccWrap = document.getElementById('ai-summary-acc-wrap');
+    
+    const submitBtn = document.getElementById('submit-btn');
+    
+    let typingTimer;
+
+    contentArea.addEventListener('input', function() {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(performPrediction, 1200);
+    });
+
+    function updatePublishButton(category, accuracy) {
+        if (category === 'General' && parseFloat(accuracy) === 0) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Cannot Publish (Invalid Content)';
+            submitBtn.classList.remove('primary');
+            submitBtn.classList.add('btn-danger');
+        } else {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="bi bi-save"></i> Save & Publish';
+            submitBtn.classList.add('primary');
+            submitBtn.classList.remove('btn-danger');
+        }
+    }
+
+    // Initial check on load
+    if (aiCategory && aiAccuracy) {
+        const cat = aiCategory.innerText.trim();
+        const accText = aiAccuracy.innerText.trim();
+        const accVal = parseFloat(accText);
+        if (cat === 'General' && (accText.includes('0%') || accVal === 0)) {
+            updatePublishButton('General', 0);
+        }
+    }
+
+    async function performPrediction() {
+        const text = contentArea.value.trim();
+        if (text.length < 50) return;
+
+        try {
+            const response = await fetch('/api/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text })
+            });
+            const data = await response.json();
+            
+            // Update Category
+            aiCategory.innerText = data.category;
+            aiAccuracy.innerText = data.accuracy + '% Confidence';
+            aiAccuracyWrap.classList.remove('d-none');
+            
+            // Update Summary
+            aiSummaryText.innerText = data.summary;
+            aiSummaryAcc.innerText = data.summary_accuracy + '% Accuracy';
+            aiSummaryAccWrap.classList.remove('d-none');
+            
+            // Update publish button state based on results
+            updatePublishButton(data.category, data.accuracy);
+            
+        } catch (err) {
+            console.error('Prediction failed', err);
+        }
+    }
+});
+</script>
+{% endblock %}

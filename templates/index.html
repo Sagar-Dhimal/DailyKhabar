@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block title %}DailyKhabar{% endblock %}
+{% block content %}
+<section class="portal-hero mb-5" id="products">
+  <div class="row g-4 align-items-start">
+    <div class="col-lg-8">
+      <div class="d-flex align-items-center mb-3">
+        <h3 class="section-title m-0 fw-bold" style="color: #5a4fcf;">
+          <i class="bi bi-trophy-fill me-2 text-warning"></i>World Cup 2026
+        </h3>
+      </div>
+      {% if world_cup_articles %}
+      <div id="worldCupCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-inner" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+          {% for featured in world_cup_articles %}
+          <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <article class="feature-card m-0" style="border-radius: 0; box-shadow: none;">
+              <a href="/article/{{ featured.article_id }}/" class="feature-image-wrap">
+                <img src="{{ featured.url_to_image|default(featured.image_url) }}" class="feature-image d-block w-100" alt="{{ featured.title }}">
+              </a>
+              <div class="feature-overlay">
+                <h2 class="feature-title">{{ featured.title }}</h2>
+                <p class="feature-meta">
+                  <span class="badge bg-primary me-2">{{ featured.category|default("World Cup 2026") }}</span>
+                  {{ featured.source_name }} • {{ featured.published_at[:10] if featured.published_at else '' }}
+                </p>
+              </div>
+            </article>
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#worldCupCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#worldCupCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {% else %}
+      <div class="feature-card d-flex align-items-center justify-content-center bg-light text-muted" style="height: 100%; min-height: 400px; border: 1px dashed #ccc;">
+        <div class="text-center">
+          <i class="bi bi-trophy fs-1 mb-3"></i>
+          <h4>No World Cup 2026 News</h4>
+          <p>Sync news to fetch the latest updates.</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <div class="col-lg-4">
+      <div class="latest-side" id="blog">
+        <h3 class="section-title mb-3">Latest post</h3>
+        <form action="/" method="get" class="mb-3">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control portal-search-input" placeholder="Search..." value="{{ query }}">
+            <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+          </div>
+        </form>
+        <div class="latest-posts-list">
+          {% for recent in recent_articles %}
+          <a href="/article/{{ recent.article_id }}/" class="latest-post-item">
+            <img src="{{ recent.url_to_image|default(recent.image_url) }}" class="latest-post-thumb" alt="{{ recent.title }}">
+            <div class="latest-post-content">
+              <div class="latest-post-title">{{ recent.title }}</div>
+              <div class="latest-post-meta">
+                <span class="text-primary fw-bold small">{{ recent.category }}</span> • {{ recent.source_name }}
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="more-news-section py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="section-title h3 mb-0">More News</h2>
+    <div class="section-nav-arrows">
+      <button class="nav-arrow-btn"><i class="bi bi-arrow-left"></i></button>
+      <button class="nav-arrow-btn"><i class="bi bi-arrow-right"></i></button>
+    </div>
+  </div>
+  
+  <div class="row g-4">
+    {% for article in articles %}
+    <div class="col-md-6 col-lg-4">
+      <div class="news-card">
+        <div class="news-card-img-wrap">
+          <img src="{{ article.url_to_image|default(article.image_url) }}" class="news-card-img" alt="{{ article.title }}">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title"><a href="/article/{{ article.article_id }}/">{{ article.title }}</a></h3>
+          <div class="news-card-meta mb-2">
+            <span class="badge bg-light text-dark border me-1">{{ article.category }}</span>
+            <span class="small text-muted">{{ article.source_name }}</span>
+          </div>
+          <p class="news-card-excerpt">{{ article.summary[:140] }}...</p>
+          <div class="news-card-footer">
+            {{ article.published_at[:10] }} • 10 min read
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination with Ellipses -->
+  {% if total_pages > 1 %}
+  <nav class="portal-pagination-nav mt-5">
+    <ul class="portal-pagination-list">
+      <!-- Previous Arrow -->
+      <li>
+        <a href="{{ url_for('index', page=page-1 if page > 1 else 1, q=query, category=selected_category) }}" 
+           class="page-arrow {% if page == 1 %}disabled{% endif %}">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+      </li>
+      
+      {% set window = 2 %}
+      {% set show_first = false %}
+      {% set show_last = false %}
+      
+      {% if page > window + 2 %}
+        {% set show_first = true %}
+      {% endif %}
+      
+      {% if page < total_pages - window - 1 %}
+        {% set show_last = true %}
+      {% endif %}
+
+      <!-- First Page -->
+      {% if show_first %}
+        <li><a href="{{ url_for('index', page=1, q=query, category=selected_category) }}" class="page-num">1</a></li>
+        <li class="page-ellipsis">...</li>
+      {% endif %}
+
+      <!-- Page Numbers around Current -->
+      {% for p in range(1, total_pages + 1) %}
+        {% if p >= page - window and p <= page + window %}
+          <li>
+            <a href="{{ url_for('index', page=p, q=query, category=selected_category) }}" 
+               class="page-num {% if p == page %}active{% endif %}">
+              {{ p }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      <!-- Last Page -->
+      {% if show_last %}
+        <li class="page-ellipsis">...</li>
+        <li><a href="{{ url_for('index', page=total_pages, q=query, category=selected_category) }}" class="page-num">{{ total_pages }}</a></li>
+      {% endif %}
+
+      <!-- Next Arrow -->
+      <li>
+        <a href="{{ url_for('index', page=page+1 if page < total_pages else total_pages, q=query, category=selected_category) }}" 
+           class="page-arrow {% if page == total_pages %}disabled{% endif %}">
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  {% endif %}
+</section>
+
+{% endblock %}

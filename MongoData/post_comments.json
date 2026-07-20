@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "69fdded946a6e1257351676e",
+    "article_id": "101401",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "username": "user1",
+    "content": "is this really true?",
+    "parent_id": "",
+    "status": "approved",
+    "created_at": "2026-05-08T13:02:17+00:00"
+  },
+  {
+    "_id": "69fded14892577d6fdd95e7e",
+    "article_id": "101401",
+    "user_id": "69fded08892577d6fdd95e7d",
+    "username": "user2",
+    "content": "yes it is",
+    "parent_id": "69fdded946a6e1257351676e",
+    "status": "approved",
+    "created_at": "2026-05-08T14:03:00+00:00"
+  },
+  {
+    "_id": "69fdefad4ad1eaf8e4a3bd24",
+    "article_id": "101499",
+    "user_id": "69fded08892577d6fdd95e7d",
+    "username": "user2",
+    "content": "let's go KKR",
+    "parent_id": "",
+    "status": "approved",
+    "created_at": "2026-05-08T14:14:05+00:00"
+  },
+  {
+    "_id": "69ff252a51aa375286fbae26",
+    "article_id": "101897",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "username": "user1",
+    "content": "hello men",
+    "parent_id": "",
+    "status": "approved",
+    "created_at": "2026-05-09T12:14:34+00:00"
+  },
+  {
+    "_id": "6a00197c6db4b89a7f0deb24",
+    "article_id": "101909",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "username": "user1",
+    "content": "xczcc",
+    "parent_id": "",
+    "status": "approved",
+    "created_at": "2026-05-10T05:37:00+00:00"
+  },
+  {
+    "_id": "6a009f9483886884e023bbff",
+    "article_id": "101398",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "username": "user1",
+    "content": "why u delete me",
+    "parent_id": "",
+    "status": "approved",
+    "created_at": "2026-05-10T15:09:08+00:00"
+  },
+  {
+    "_id": "6a5362861b44e95c0eba3fa6",
+    "article_id": "101398",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "username": "user1",
+    "content": "no way",
+    "parent_id": "6a009f9483886884e023bbff",
+    "status": "approved",
+    "created_at": "2026-07-12T09:46:46+00:00"
+  }
+]

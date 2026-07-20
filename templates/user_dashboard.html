@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}My Dashboard - Daily Khabar{% endblock %}
+
+{% block content %}
+<div class="admin-hero">
+  <div class="admin-hero-copy">
+    <span class="admin-kicker">PERSONAL INSIGHTS <i class="bi bi-person-circle"></i></span>
+    <h1>Welcome, {{ session.get('username', 'User') }}</h1>
+    <p>Track your AI summaries, news classifications, comments, and support queries in your polished workspace.</p>
+  </div>
+  <div class="admin-hero-tools">
+    <a href="{{ url_for('summarize') }}" class="admin-toolbar-btn">
+      <i class="bi bi-lightning-charge"></i> Summarizer
+    </a>
+    <a href="{{ url_for('index') }}" class="admin-toolbar-btn primary">
+      <i class="bi bi-globe"></i> Browse News
+    </a>
+  </div>
+</div>
+
+<div class="admin-stats-grid">
+  <div class="admin-stat-card stat-orange">
+    <strong>{{ stats.total_summaries }}</strong>
+    <span>Total Summaries</span>
+    <small>AI-generated text</small>
+    <i class="bi bi-envelope stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+  <div class="admin-stat-card stat-blue">
+    <strong>{{ stats.total_classifications }}</strong>
+    <span>Classifications</span>
+    <small>AI news categories</small>
+    <i class="bi bi-send stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+  <div class="admin-stat-card stat-purple">
+    <strong>{{ stats.total_comments }}</strong>
+    <span>My Comments</span>
+    <small>Discussion activity</small>
+    <i class="bi bi-chat-dots stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+  <div class="admin-stat-card stat-green">
+    <strong>{{ stats.total_queries }}</strong>
+    <span>My Queries</span>
+    <small>Support requests</small>
+    <i class="bi bi-check2-all stat-icon"></i>
+    <div class="stat-arrow"><i class="bi bi-chevron-right"></i></div>
+  </div>
+</div>
+
+<div class="admin-panel-grid">
+  <div class="admin-panel">
+    <div class="admin-panel-header">
+      <h2><i class="bi bi-clock-history"></i> Activity Timeline</h2>
+      <span>Latest interactions</span>
+    </div>
+    <div class="admin-activity-table-wrap">
+      <table class="admin-activity-table">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>Type</th>
+            <th>Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for event in activities %}
+          <tr>
+            <td><strong>{{ event.title }}</strong></td>
+            <td><span class="admin-type-tag">{{ event.event_type }}</span></td>
+            <td>
+              <small class="text-muted">
+                {% if event.event_type == "summary" %}
+                  {{ event.details.accuracy_pct }}% Acc
+                {% elif event.event_type == "classification" %}
+                  {{ event.details.category }}
+                {% else %}
+                  {{ event.created_at[:10] }}
+                {% endif %}
+              </small>
+            </td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="3" class="text-center text-muted py-4">No activity yet.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="admin-panel">
+    <div class="admin-panel-header">
+      <h2><i class="bi bi-chat-left-text"></i> Recent Comments</h2>
+      <span>Your feedback</span>
+    </div>
+    <div class="admin-activity-table-wrap">
+      <table class="admin-activity-table">
+        <thead>
+          <tr>
+            <th>Content</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for comment in comments %}
+          <tr>
+            <td><div style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ comment.content }}</div></td>
+            <td><span class="admin-status-pill {% if comment.status == 'approved' %}status-green{% else %}status-yellow{% endif %}">{{ comment.status }}</span></td>
+          </tr>
+          {% else %}
+          <tr>
+            <td colspan="2" class="text-center text-muted py-4">No comments yet.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "user_id": null,
+    "name": "adadasd",
+    "email": "adsadad@gmail.com",
+    "message": "No news filtering option",
+    "answer": "dadasd",
+    "status": "answered",
+    "created_at": "",
+    "updated_at": ""
+  },
+  {
+    "id": 2,
+    "user_id": null,
+    "name": "asdasd",
+    "email": "ad@gmail.com",
+    "message": "adsada",
+    "answer": "sc",
+    "status": "answered",
+    "created_at": "",
+    "updated_at": ""
+  },
+  {
+    "id": 3,
+    "user_id": null,
+    "name": "Sagar Dhimal",
+    "email": "sagadhimal21@gmail.com",
+    "message": "This is a good prototype for a news portal project.",
+    "answer": "Thank you for your comment!",
+    "status": "answered",
+    "created_at": "",
+    "updated_at": ""
+  }
+]

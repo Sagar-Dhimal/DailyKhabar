@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block body_class %}admin-dashboard-page{% endblock %}
+{% block site_nav %}{% endblock %}
+{% block main_class %}admin-dashboard-main{% endblock %}
+{% block site_footer %}{% endblock %}
+
+{% block content %}
+<div class="admin-shell">
+  <header class="admin-topbar">
+    <div class="admin-topbar-left">
+      <a class="admin-topbar-brand d-flex align-items-center gap-2" href="{{ url_for('admin_dashboard') }}">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" style="height: 24px; filter: brightness(0) invert(1);">
+        <span>DailyKhabar • Admin</span>
+      </a>
+    </div>
+    <div class="admin-topbar-user">
+      <a class="admin-user-toggle" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> Sign out</a>
+    </div>
+  </header>
+
+  <aside class="admin-sidebar">
+    <div class="admin-profile">
+      <div class="admin-avatar">A</div>
+      <div class="admin-profile-info">
+        <div class="fw-bold small">Admin</div>
+        <div class="admin-profile-actions">
+          <a href="#"><i class="bi bi-gear"></i></a>
+          <a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="admin-nav">
+      <a class="admin-nav-link {% if admin_section == 'dashboard' %}active{% endif %}" href="{{ url_for('admin_dashboard') }}">
+        <i class="bi bi-grid-1x2"></i> Dashboard
+      </a>
+
+      <!-- News Category -->
+      <a class="admin-nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#categoryMenu">
+        <span><i class="bi bi-folder2-open"></i> News Category</span>
+        <i class="bi bi-chevron-down small"></i>
+      </a>
+      <div class="collapse {% if admin_section == 'categories' %}show{% endif %}" id="categoryMenu">
+        <a class="admin-nav-sublink" href="{{ url_for('admin_categories') }}"><i class="bi bi-plus-circle"></i> Add Category</a>
+        <a class="admin-nav-sublink" href="{{ url_for('admin_categories') }}"><i class="bi bi-layers"></i> Manage Category</a>
+      </div>
+
+      <!-- Post -->
+      <a class="admin-nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#postMenu">
+        <span><i class="bi bi-pencil-square"></i> Post</span>
+        <i class="bi bi-chevron-down small"></i>
+      </a>
+      <div class="collapse {% if admin_section == 'posts' %}show{% endif %}" id="postMenu">
+        <a class="admin-nav-sublink" href="{{ url_for('admin_post_create') }}"><i class="bi bi-plus-circle"></i> Add Post</a>
+        <a class="admin-nav-sublink" href="{{ url_for('admin_posts') }}"><i class="bi bi-layers"></i> Manage Post</a>
+      </div>
+
+      <a class="admin-nav-link {% if admin_section == 'comments' %}active{% endif %}" href="{{ url_for('admin_comments') }}">
+        <i class="bi bi-chat-left-text"></i> Comments
+      </a>
+      
+      <a class="admin-nav-link {% if admin_section == 'queries' %}active{% endif %}" href="{{ url_for('admin_queries') }}">
+        <i class="bi bi-envelope"></i> Contact Us Queries
+      </a>
+    </nav>
+  </aside>
+
+  <section class="admin-workspace">
+    <div class="admin-content">
+      {% block admin_content %}{% endblock %}
+    </div>
+  </section>
+</div>
+{% endblock %}

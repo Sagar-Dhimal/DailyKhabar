@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Daily Khabar{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card shadow-sm border-0 rounded-4 p-4 p-md-5">
+            <div class="row g-5">
+                <div class="col-md-5">
+                    <h2 class="fw-bold mb-4">Get in Touch</h2>
+                    <p class="text-muted mb-5">Have feedback or questions about our AI technology? We'd love to hear from you.</p>
+                    
+                    <div class="mb-4">
+                        <div class="fw-bold"><i class="bi bi-geo-alt me-2 text-primary"></i> Location</div>
+                        <div class="text-secondary ps-4">Kathmandu, Nepal</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="fw-bold"><i class="bi bi-envelope me-2 text-primary"></i> Email</div>
+                        <div class="text-secondary ps-4">info@dailykhabar.com</div>
+                    </div>
+                    
+                    <div>
+                        <div class="fw-bold"><i class="bi bi-clock me-2 text-primary"></i> Hours</div>
+                        <div class="text-secondary ps-4">Mon - Fri: 9am - 5pm</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-7">
+                    <form action="{{ url_for('contact') }}" method="POST" class="bg-light p-4 rounded-4">
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-bold small text-uppercase">Your Name</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="John Doe" value="{{ session.get('username', '') }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold small text-uppercase">Email Address</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label fw-bold small text-uppercase">Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,588 @@
+[
+  {
+    "_id": "69fdd8951035870c4cdd902f",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Technology",
+    "details": {
+      "category": "Technology",
+      "accuracy_pct": 74.3,
+      "words_in": 55
+    },
+    "created_at": "2026-05-08T12:35:33+00:00"
+  },
+  {
+    "_id": "69fdd8aa1035870c4cdd9030",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Automation can help journalists process vast amounts of data quickly. However, human oversight remains crucial to ensure ethics and accuracy. Large language models are becoming more accessible, but they also bring challenges like misinformation and bias.",
+      "accuracy_pct": 81.7,
+      "words_in": 55,
+      "words_out": 36
+    },
+    "created_at": "2026-05-08T12:35:54+00:00"
+  },
+  {
+    "_id": "69fdd8b61035870c4cdd9031",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "The future of artificial intelligence in news rooms is bright. Automation can help journalists process vast amounts of data quickly. However, human oversight remains crucial to ensure ethics and accuracy. Large language models are becoming more accessible, but they also bring challenges like misinformation and bias. Understanding these tools is key for modern media organizations.",
+      "accuracy_pct": 100.0,
+      "words_in": 55,
+      "words_out": 55
+    },
+    "created_at": "2026-05-08T12:36:06+00:00"
+  },
+  {
+    "_id": "69fdd8bf1035870c4cdd9032",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Automation can help journalists process vast amounts of data quickly. Large language models are becoming more accessible, but they also bring challenges like misinformation and bias.",
+      "accuracy_pct": 66.7,
+      "words_in": 55,
+      "words_out": 26
+    },
+    "created_at": "2026-05-08T12:36:15+00:00"
+  },
+  {
+    "_id": "69fdd8cf1035870c4cdd9033",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Technology",
+    "details": {
+      "category": "Technology",
+      "accuracy_pct": 74.3,
+      "words_in": 55
+    },
+    "created_at": "2026-05-08T12:36:31+00:00"
+  },
+  {
+    "_id": "69fde244fcafc26891879b76",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Sports",
+    "details": {
+      "category": "Sports",
+      "accuracy_pct": 74.3,
+      "words_in": 91
+    },
+    "created_at": "2026-05-08T13:16:52+00:00"
+  },
+  {
+    "_id": "69fde252fcafc26891879b77",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Delhi Capitals vs Kolkata Knight Riders Live Score, IPL 2026: Inconsistent Delhi Capitals host an on-song Kolkata Knight Riders in an IPL 2026 match at the Arun Jaitley Stadium, Delhi tonight. After remaining winless in their first six games, KKR have registered three consecutive victories to keep their playoff hopes alive. The Axar Patel-led side come into this game on the back of an eight-wicket defeat at the hands of Chennai Super Kings.",
+      "accuracy_pct": 88.2,
+      "words_in": 92,
+      "words_out": 73
+    },
+    "created_at": "2026-05-08T13:17:06+00:00"
+  },
+  {
+    "_id": "69fde7550381395088ea2773",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Business",
+    "details": {
+      "category": "Business",
+      "accuracy_pct": 74.3,
+      "words_in": 119
+    },
+    "created_at": "2026-05-08T13:38:29+00:00"
+  },
+  {
+    "_id": "69fded37892577d6fdd95e7f",
+    "user_id": "69fded08892577d6fdd95e7d",
+    "event_type": "classification",
+    "title": "Classified text as Technology",
+    "details": {
+      "category": "Technology",
+      "accuracy_pct": 74.3,
+      "words_in": 183
+    },
+    "created_at": "2026-05-08T14:03:35+00:00"
+  },
+  {
+    "_id": "69fded44892577d6fdd95e80",
+    "user_id": "69fded08892577d6fdd95e7d",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Manchester City's trophyless 2024-25 season was derailed by a series of injuries to key first-team players - none more important than Rodri. The Spain captain sustained a serious knee injury that ruled him out for most of the campaign and City endured the unthinkable under Pep Guardiola by ending the season without any silverware for the first time in eight years. Although he has returned to fitness and featured in 35 games for club and country this season, Rodri has spent additional time on the sidelines with a hamstring injury and now a groin issue. Guardiola said Rodri's fitness will be assessed before making a decision on whether he can face Brentford on Saturday (kick-off 17:30 BST).",
+      "accuracy_pct": 81.7,
+      "words_in": 183,
+      "words_out": 117
+    },
+    "created_at": "2026-05-08T14:03:48+00:00"
+  },
+  {
+    "_id": "69fdf8096e57305a616f990f",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Gold price fell by Rs 3,000 per tola in the domestic market on Wednesday, marking a second consecutive day of decline. According to the Federation of Nepal Gold and Silver Dealers' Association, fine gold is being traded at Rs 294,500 per tola, down from Rs 297,500 per tola on Tuesday.Silver price also declined in line with gold, dropping by Rs 30 per tola. The white metal is being traded at Rs 4,915 per tola today, compared to Rs 4,945 per tola on Tuesday.",
+      "accuracy_pct": 100.0,
+      "words_in": 83,
+      "words_out": 83
+    },
+    "created_at": "2026-05-08T14:49:45+00:00"
+  },
+  {
+    "_id": "69fdf8126e57305a616f9910",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Business",
+    "details": {
+      "category": "Business",
+      "accuracy_pct": 74.3,
+      "words_in": 83
+    },
+    "created_at": "2026-05-08T14:49:54+00:00"
+  },
+  {
+    "_id": "69fdf8246e57305a616f9911",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Sports",
+    "details": {
+      "category": "Sports",
+      "accuracy_pct": 74.3,
+      "words_in": 138
+    },
+    "created_at": "2026-05-08T14:50:12+00:00"
+  },
+  {
+    "_id": "69fdf89c8ac6fde1042d6396",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Justice Manoj Sharma recommended as Chief Justice Widespread rain, thunderstorms likely across hilly regions Traffic resumes along Narayanghat-Mugling road section Govt dismisses 15 honorary consuls CLOSE MORE The Meteorological Forecasting Division has predicted widespread rainfall, thunderstorms and gusty winds across the country on Wednesday, with heavy downpours likely in some areas. Widespread rain, thunderstorms likely across country today Widespread rain, thunderstorms likely across the country today According to the forecast, Koshi, Madhesh, Bagmati, Gandaki and Lumbini provinces will remain mostly cloudy, along with the hilly and Himalayan regions of Karnali and Sudurpashchim. Light to moderate rain accompanied by thunder, lightning and hail is expected at many places, while heavy rainfall is likely at one or two locations, particularly in the hilly regions of Koshi and Gandaki.",
+      "accuracy_pct": 62.6,
+      "classification_confidence": 79.0,
+      "words_in": 295,
+      "words_out": 126
+    },
+    "created_at": "2026-05-08T14:52:12+00:00"
+  },
+  {
+    "_id": "69fdf8a38ac6fde1042d6397",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Business",
+    "details": {
+      "category": "Business",
+      "accuracy_pct": 74.3,
+      "words_in": 295
+    },
+    "created_at": "2026-05-08T14:52:19+00:00"
+  },
+  {
+    "_id": "69fdf8bb8ac6fde1042d6398",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Politics",
+    "details": {
+      "category": "Politics",
+      "accuracy_pct": 74.3,
+      "words_in": 422
+    },
+    "created_at": "2026-05-08T14:52:43+00:00"
+  },
+  {
+    "_id": "69fdf8e28ac6fde1042d6399",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Politics",
+    "details": {
+      "category": "Politics",
+      "accuracy_pct": 74.3,
+      "words_in": 422
+    },
+    "created_at": "2026-05-08T14:53:22+00:00"
+  },
+  {
+    "_id": "69fdf998b0033008614f4050",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Politics",
+    "details": {
+      "category": "Politics",
+      "accuracy_pct": 94.5,
+      "words_in": 422
+    },
+    "created_at": "2026-05-08T14:56:24+00:00"
+  },
+  {
+    "_id": "69fdf9c1b0033008614f4051",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Justice Manoj Sharma recommended as Chief Justice Widespread rain, thunderstorms likely across hilly regions Traffic resumes along Narayanghat-Mugling road section Govt dismisses 15 honorary consuls CLOSE MORE Photo Courtesy: WWF Nepal KATHMANDU, APRIL 29 The Ministry of Forests and Environment and WWF Nepal have formalised a Scope of Cooperation aimed at scaling biodiversity conservation and sustainable development efforts across Nepal, with WWF Nepal committing to mobilise up to USD 40 million over ten years to support implementation. India to fund seven community development projects worth Rs 473 million WWF Nepal marks Earth Hour with nationwide engagement initiatives The agreement, signed on Monday in Kathmandu, aligns joint efforts with Nepal&#039;s national conservation priorities and international commitments spanning biodiversity, forests, climate change, wetlands, agriculture, and the Sustainable Development Goals. Implementation will extend beyond the central government, with WWF Nepal working in coordination with Provincial Ministries of Forests, Division Forest Offices, Protected Area Offices, buffer zone institutions, community forest management groups, and local and national non-governmental organisations.",
+      "accuracy_pct": 62.3,
+      "classification_confidence": 93.9,
+      "words_in": 422,
+      "words_out": 164
+    },
+    "created_at": "2026-05-08T14:57:05+00:00"
+  },
+  {
+    "_id": "69fdfa88ad63c6a94e8d7ffc",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Business",
+    "details": {
+      "category": "Business",
+      "accuracy_pct": 83.0,
+      "words_in": 199
+    },
+    "created_at": "2026-05-08T15:00:24+00:00"
+  },
+  {
+    "_id": "69fdfdcea363a1ec2d65771d",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Justice Manoj Sharma recommended as Chief Justice Widespread rain, thunderstorms likely across hilly regions Traffic resumes along Narayanghat-Mugling road section Govt dismisses 15 honorary consuls CLOSE MORE The Meteorological Forecasting Division has predicted widespread rainfall, thunderstorms and gusty winds across the country on Wednesday, with heavy downpours likely in some areas. Widespread rain, thunderstorms likely across country today Widespread rain, thunderstorms likely across the country today According to the forecast, Koshi, Madhesh, Bagmati, Gandaki and Lumbini provinces will remain mostly cloudy, along with the hilly and Himalayan regions of Karnali and Sudurpashchim. Light to moderate rain accompanied by thunder, lightning and hail is expected at many places, while heavy rainfall is likely at one or two locations, particularly in the hilly regions of Koshi and Gandaki. Tonight, similar conditions are expected to persist, with moderate rainfall and thunderstorms forecast at many places in Koshi, Madhesh, Bagmati and Gandaki, and scattered rainfall elsewhere. High-velocity winds are expected in parts of Sudurpashchim (Kanchanpur, Dadeldhura, Doti), Lumbini (Bardiya, Banke, Dang, Arghakhanchi, Parasi), Gandaki and Bagmati (Nawalpur, Chitwan), Madhesh (Bara, Parsa, Dhanusha) and Koshi (Jhapa, Morang).",
+      "accuracy_pct": 76.2,
+      "classification_confidence": 80.0,
+      "words_in": 296,
+      "words_out": 182
+    },
+    "created_at": "2026-05-08T15:14:22+00:00"
+  },
+  {
+    "_id": "69fdfdd5a363a1ec2d65771e",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Business",
+    "details": {
+      "category": "Business",
+      "accuracy_pct": 78.2,
+      "words_in": 296
+    },
+    "created_at": "2026-05-08T15:14:29+00:00"
+  },
+  {
+    "_id": "69fdfe27a363a1ec2d65771f",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Justice Manoj Sharma recommended as Chief Justice Widespread rain, thunderstorms likely across hilly regions Traffic resumes along Narayanghat-Mugling road section Govt dismisses 15 honorary consuls CLOSE MORE The Meteorological Forecasting Division has predicted widespread rainfall, thunderstorms and gusty winds across the country on Wednesday, with heavy downpours likely in some areas. Widespread rain, thunderstorms likely across country today Widespread rain, thunderstorms likely across the country today According to the forecast, Koshi, Madhesh, Bagmati, Gandaki and Lumbini provinces will remain mostly cloudy, along with the hilly and Himalayan regions of Karnali and Sudurpashchim. Light to moderate rain accompanied by thunder, lightning and hail is expected at many places, while heavy rainfall is likely at one or two locations, particularly in the hilly regions of Koshi and Gandaki. Tonight, similar conditions are expected to persist, with moderate rainfall and thunderstorms forecast at many places in Koshi, Madhesh, Bagmati and Gandaki, and scattered rainfall elsewhere. High-velocity winds are expected in parts of Sudurpashchim (Kanchanpur, Dadeldhura, Doti), Lumbini (Bardiya, Banke, Dang, Arghakhanchi, Parasi), Gandaki and Bagmati (Nawalpur, Chitwan), Madhesh (Bara, Parsa, Dhanusha) and Koshi (Jhapa, Morang).",
+      "accuracy_pct": 76.2,
+      "classification_confidence": 78.8,
+      "words_in": 296,
+      "words_out": 182
+    },
+    "created_at": "2026-05-08T15:15:51+00:00"
+  },
+  {
+    "_id": "69fdfe31a363a1ec2d657720",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Business",
+    "details": {
+      "category": "Business",
+      "accuracy_pct": 79.4,
+      "words_in": 296
+    },
+    "created_at": "2026-05-08T15:16:01+00:00"
+  },
+  {
+    "_id": "69ff251351aa375286fbae24",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Justice Manoj Sharma recommended as Chief Justice Widespread rain, thunderstorms likely across hilly regions Traffic resumes along Narayanghat-Mugling road section Govt dismisses 15 honorary consuls CLOSE MORE The Meteorological Forecasting Division has predicted widespread rainfall, thunderstorms and gusty winds across the country on Wednesday, with heavy downpours likely in some areas. Widespread rain, thunderstorms likely across country today Widespread rain, thunderstorms likely across the country today According to the forecast, Koshi, Madhesh, Bagmati, Gandaki and Lumbini provinces will remain mostly cloudy, along with the hilly and Himalayan regions of Karnali and Sudurpashchim. Light to moderate rain accompanied by thunder, lightning and hail is expected at many places, while heavy rainfall is likely at one or two locations, particularly in the hilly regions of Koshi and Gandaki. Tonight, similar conditions are expected to persist, with moderate rainfall and thunderstorms forecast at many places in Koshi, Madhesh, Bagmati and Gandaki, and scattered rainfall elsewhere. High-velocity winds are expected in parts of Sudurpashchim (Kanchanpur, Dadeldhura, Doti), Lumbini (Bardiya, Banke, Dang, Arghakhanchi, Parasi), Gandaki and Bagmati (Nawalpur, Chitwan), Madhesh (Bara, Parsa, Dhanusha) and Koshi (Jhapa, Morang).",
+      "accuracy_pct": 76.2,
+      "classification_confidence": 78.4,
+      "words_in": 296,
+      "words_out": 182
+    },
+    "created_at": "2026-05-09T12:14:11+00:00"
+  },
+  {
+    "_id": "69ff251b51aa375286fbae25",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Business",
+    "details": {
+      "category": "Business",
+      "accuracy_pct": 78.6,
+      "words_in": 296
+    },
+    "created_at": "2026-05-09T12:14:19+00:00"
+  },
+  {
+    "_id": "69ff3ab56a2f28a548656464",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Technology",
+    "details": {
+      "category": "Technology",
+      "accuracy_pct": 8.3,
+      "words_in": 293
+    },
+    "created_at": "2026-05-09T13:46:29+00:00"
+  },
+  {
+    "_id": "69ff3ada6a2f28a548656465",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Education",
+    "details": {
+      "category": "Education",
+      "accuracy_pct": 33.1,
+      "words_in": 197
+    },
+    "created_at": "2026-05-09T13:47:06+00:00"
+  },
+  {
+    "_id": "69ff5d77ec05a1e0a6ee5de9",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Education",
+    "details": {
+      "category": "Education",
+      "accuracy_pct": 89.7,
+      "words_in": 197
+    },
+    "created_at": "2026-05-09T16:14:47+00:00"
+  },
+  {
+    "_id": "6a00191c6db4b89a7f0deb21",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Politics",
+    "details": {
+      "category": "Politics",
+      "accuracy_pct": 89.0,
+      "words_in": 479
+    },
+    "created_at": "2026-05-10T05:35:24+00:00"
+  },
+  {
+    "_id": "6a0019246db4b89a7f0deb22",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "(EPA Images pic) TEHRAN, May 9, 2026 (AFP) : Iran's football federation said on Saturday that the men's national team will take part in the 2026 World Cup this summer, but demanded that joint hosts the United States, Mexico and Canada agree to its conditions amid the Middle East war. The call comes after Canada refused entry to the federation's chief last month before the FIFA Congress because of his links to the Islamic Revolutionary Guard Corps (IRGC), the ideological arm of Iran's military, which it designated as a terror group in 2024. \"We will participate in the World Cup tournament, but without any retreat from our beliefs, culture, and convictions.\" The Iranian football federation (FFIRI) president Mehdi Taj told state TV on Friday that Tehran has 10 conditions for attending the global spectacle, seeking assurances over the country's treatment.",
+      "accuracy_pct": 57.1,
+      "classification_confidence": 90.0,
+      "words_in": 479,
+      "words_out": 140
+    },
+    "created_at": "2026-05-10T05:35:32+00:00"
+  },
+  {
+    "_id": "6a0019296db4b89a7f0deb23",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "(EPA Images pic) TEHRAN, May 9, 2026 (AFP) : Iran's football federation said on Saturday that the men's national team will take part in the 2026 World Cup this summer, but demanded that joint hosts the United States, Mexico and Canada agree to its conditions amid the Middle East war. The call comes after Canada refused entry to the federation's chief last month before the FIFA Congress because of his links to the Islamic Revolutionary Guard Corps (IRGC), the ideological arm of Iran's military, which it designated as a terror group in 2024. Iran's presence at the tournament, which will take place between June 11 and July 19, has been shrouded in uncertainty since the eruption of war in the Middle East in February following strikes by the United States and Israel. \"We will participate in the World Cup tournament, but without any retreat from our beliefs, culture, and convictions.\" The Iranian football federation (FFIRI) president Mehdi Taj told state TV on Friday that Tehran has 10 conditions for attending the global spectacle, seeking assurances over the country's treatment. \"All players and technical staff, especially those who have served their military service in the Islamic Revolutionary Guard Corps or IRGC, such as Mehdi Taremi and Ehsan Hajsafi, should be granted visas without any problems,\" said Iranian football chief Taj.",
+      "accuracy_pct": 71.1,
+      "classification_confidence": 90.0,
+      "words_in": 479,
+      "words_out": 219
+    },
+    "created_at": "2026-05-10T05:35:37+00:00"
+  },
+  {
+    "_id": "6a00321242fdfcb96d0e7bdd",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Flask==3.0.2\n\n",
+      "accuracy_pct": 100.0,
+      "classification_confidence": 70.0,
+      "words_in": 1,
+      "words_out": 1
+    },
+    "created_at": "2026-05-10T07:21:54+00:00"
+  },
+  {
+    "_id": "6a00322042fdfcb96d0e7bde",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Automation can help journalists process vast amounts of data quickly. However, human oversight remains crucial to ensure ethics and accuracy. Large language models are becoming more accessible, but they also bring challenges like misinformation and bias.",
+      "accuracy_pct": 81.7,
+      "classification_confidence": 75.7,
+      "words_in": 55,
+      "words_out": 36
+    },
+    "created_at": "2026-05-10T07:22:08+00:00"
+  },
+  {
+    "_id": "6a00322e42fdfcb96d0e7bdf",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Technology",
+    "details": {
+      "category": "Technology",
+      "accuracy_pct": 75.1,
+      "words_in": 55
+    },
+    "created_at": "2026-05-10T07:22:22+00:00"
+  },
+  {
+    "_id": "6a00ac3e1a861e76fb13782d",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Politics",
+    "details": {
+      "category": "Politics",
+      "accuracy_pct": 88.0,
+      "words_in": 153
+    },
+    "created_at": "2026-05-10T16:03:10+00:00"
+  },
+  {
+    "_id": "6a014734fb925f0f0d8b57e0",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Hansi Flick’s side defeated their Clasico rivals 2-0 at the Camp Nou on Sunday, further stretching their lead at the top of the table to 14 points with just three games to play, making it impossible to catch them. In Flick’s debut campaign last term, Barca won the domestic treble of La Liga, Copa del Rey and Supercopa de Espana titles. Barcelona only needed a point to confirm their status as back-to-back La Liga champions, winning the title in the derby match against their greatest rivals for the first time.",
+      "accuracy_pct": 80.9,
+      "classification_confidence": 79.9,
+      "words_in": 155,
+      "words_out": 90
+    },
+    "created_at": "2026-05-11T03:04:20+00:00"
+  },
+  {
+    "_id": "6a01473dfb925f0f0d8b57e1",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Sports",
+    "details": {
+      "category": "Sports",
+      "accuracy_pct": 79.5,
+      "words_in": 155
+    },
+    "created_at": "2026-05-11T03:04:29+00:00"
+  },
+  {
+    "_id": "6a016383833f02483fed5626",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Hansi Flick’s side defeated their Clasico rivals 2-0 at the Camp Nou on Sunday, further stretching their lead at the top of the table to 14 points with just three games to play, making it impossible to catch them. In Flick’s debut campaign last term, Barca won the domestic treble of La Liga, Copa del Rey and Supercopa de Espana titles. Barcelona only needed a point to confirm their status as back-to-back La Liga champions, winning the title in the derby match against their greatest rivals for the first time.",
+      "accuracy_pct": 80.9,
+      "classification_confidence": 78.5,
+      "words_in": 155,
+      "words_out": 90
+    },
+    "created_at": "2026-05-11T05:05:07+00:00"
+  },
+  {
+    "_id": "6a016390833f02483fed5627",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Sports",
+    "details": {
+      "category": "Sports",
+      "accuracy_pct": 78.6,
+      "words_in": 155
+    },
+    "created_at": "2026-05-11T05:05:20+00:00"
+  },
+  {
+    "_id": "6a0aa9de3b21d3a78dbc7165",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Hansi Flick’s side defeated their Clasico rivals 2-0 at the Camp Nou on Sunday, further stretching their lead at the top of the table to 14 points with just three games to play, making it impossible to catch them. In Flick’s debut campaign last term, Barca won the domestic treble of La Liga, Copa del Rey and Supercopa de Espana titles. Barcelona only needed a point to confirm their status as back-to-back La Liga champions, winning the title in the derby match against their greatest rivals for the first time.",
+      "accuracy_pct": 80.9,
+      "classification_confidence": 78.4,
+      "words_in": 155,
+      "words_out": 90
+    },
+    "created_at": "2026-05-18T05:55:42+00:00"
+  },
+  {
+    "_id": "6a0aa9f13b21d3a78dbc7166",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Sports",
+    "details": {
+      "category": "Sports",
+      "accuracy_pct": 78.1,
+      "words_in": 155
+    },
+    "created_at": "2026-05-18T05:56:01+00:00"
+  },
+  {
+    "_id": "6a3f6b68ff8267f2a2913d6c",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Sports",
+    "details": {
+      "category": "Sports",
+      "accuracy_pct": 79.7,
+      "words_in": 155
+    },
+    "created_at": "2026-06-27T06:19:20+00:00"
+  },
+  {
+    "_id": "6a3f6b70ff8267f2a2913d6d",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Hansi Flick’s side defeated their Clasico rivals 2-0 at the Camp Nou on Sunday, further stretching their lead at the top of the table to 14 points with just three games to play, making it impossible to catch them. In Flick’s debut campaign last term, Barca won the domestic treble of La Liga, Copa del Rey and Supercopa de Espana titles. Barcelona only needed a point to confirm their status as back-to-back La Liga champions, winning the title in the derby match against their greatest rivals for the first time.",
+      "accuracy_pct": 80.9,
+      "classification_confidence": 79.8,
+      "words_in": 155,
+      "words_out": 90
+    },
+    "created_at": "2026-06-27T06:19:28+00:00"
+  },
+  {
+    "_id": "6a5362a51b44e95c0eba3fa7",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "summary",
+    "title": "Summarized news text",
+    "details": {
+      "summary": "Hansi Flick’s side defeated their Clasico rivals 2-0 at the Camp Nou on Sunday, further stretching their lead at the top of the table to 14 points with just three games to play, making it impossible to catch them. In Flick’s debut campaign last term, Barca won the domestic treble of La Liga, Copa del Rey and Supercopa de Espana titles. Barcelona only needed a point to confirm their status as back-to-back La Liga champions, winning the title in the derby match against their greatest rivals for the first time.",
+      "accuracy_pct": 80.9,
+      "classification_confidence": 79.5,
+      "words_in": 155,
+      "words_out": 90
+    },
+    "created_at": "2026-07-12T09:47:17+00:00"
+  },
+  {
+    "_id": "6a5362b71b44e95c0eba3fa8",
+    "user_id": "69fdcf62bc505ca397e850ea",
+    "event_type": "classification",
+    "title": "Classified text as Sports",
+    "details": {
+      "category": "Sports",
+      "accuracy_pct": 78.3,
+      "words_in": 90
+    },
+    "created_at": "2026-07-12T09:47:35+00:00"
+  }
+]

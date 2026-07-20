@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Register - DailyKhabar{% endblock %}
+{% block content %}
+<div class="row justify-content-center py-5">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-header">Create Account</div>
+      <div class="card-body p-4">
+        <form method="post" action="/register">
+
+          <input type="hidden" name="next" value="{{ next }}">
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Register</button>
+        </form>
+        <p class="small mt-3 mb-0">Already have an account? <a href="/login">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            const inputs = form.querySelectorAll('input[required]');
+            let valid = true;
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('is-invalid');
+                    valid = false;
+                } else {
+                    input.classList.remove('is-invalid');
+                    input.classList.add('is-valid');
+                }
+            });
+            if (!valid) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

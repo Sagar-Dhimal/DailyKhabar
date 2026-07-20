@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}AI Tools - DailyKhabar{% endblock %}
+{% block content %}
+<div class="row justify-content-center py-5">
+  <div class="col-lg-8 text-center">
+    <h1 class="display-5 mb-3">AI Intelligence Suite</h1>
+    <p class="lead text-muted mb-5">Choose a tool below to analyze, summarize, or classify your text and documents.</p>
+    
+    <div class="row g-4 text-start">
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm tool-card">
+          <div class="card-body p-4">
+            <div class="mb-3 text-primary"><i class="bi bi-justify-left fs-1"></i></div>
+            <h3 class="card-title">Text Summarizer</h3>
+            <p class="card-text text-muted">Condense long articles or documents into concise, readable summaries using our advanced ML algorithm.</p>
+            <a href="{{ url_for('summarize') }}" class="btn btn-outline-primary mt-3">Try Summarizer</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm tool-card">
+          <div class="card-body p-4">
+            <div class="mb-3 text-success"><i class="bi bi-grid-3x3-gap-fill fs-1"></i></div>
+            <h3 class="card-title">Text Classifier</h3>
+            <p class="card-text text-muted">Automatically categorize your text into editorial sections like Business, Sports, or Technology.</p>
+            <a href="{{ url_for('classify') }}" class="btn btn-outline-success mt-3">Try Classifier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.tool-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+</style>
+{% endblock %}

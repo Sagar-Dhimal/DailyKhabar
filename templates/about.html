@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% block title %}About - Daily Khabar{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav mb-4">
+        <a href="{{ url_for('index') }}">Home</a> / <span>About</span>
+    </nav>
+
+    <div class="about-hero">
+        <div class="about-hero-left">
+            <h1 class="about-title">About <span>Daily Khabar</span></h1>
+            <p class="about-description">
+                DailyKhabar is a simple, fast, and mobile-friendly platform for curated news. Browse by category, 
+                read distraction-free articles, and share your views through comments — all in a clean, modern UI.
+            </p>
+            <div class="about-badges">
+                <span class="about-badge"><i class="bi bi-lightning-fill"></i> Fast</span>
+                <span class="about-badge"><i class="bi bi-shield-check"></i> Secure</span>
+                <span class="about-badge"><i class="bi bi-layout-text-sidebar-reverse"></i> Content-focused</span>
+            </div>
+        </div>
+
+        <div class="about-hero-right">
+            <div class="about-info-grid">
+                <div class="about-info-card">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <div>
+                        <strong>Posts</strong>
+                        <small>Dynamic content</small>
+                    </div>
+                </div>
+                <div class="about-info-card">
+                    <i class="bi bi-tags"></i>
+                    <div>
+                        <strong>Categories</strong>
+                        <small>Easy navigation</small>
+                    </div>
+                </div>
+                <div class="about-info-card">
+                    <i class="bi bi-chat-left-dots"></i>
+                    <div>
+                        <strong>Comments</strong>
+                        <small>Moderated</small>
+                    </div>
+                </div>
+                <div class="about-info-card">
+                    <i class="bi bi-clock-history"></i>
+                    <div>
+                        <strong>Fresh</strong>
+                        <small>Updated regularly</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="about-mission-card mt-5">
+        <div class="mission-header">
+            <i class="bi bi-record-circle"></i>
+            <h2>Our Mission</h2>
+        </div>
+        <p>
+            To deliver an accurate, clutter-free news experience that's delightful for readers and effortless for 
+            editors — fast performance, accessible design, and simple publishing tools.
+        </p>
+    </div>
+</div>
+
+<style>
+.about-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.breadcrumb-nav {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+.breadcrumb-nav a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.about-hero {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.about-hero-left {
+    flex: 1.2;
+}
+
+.about-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #212529;
+    margin-bottom: 20px;
+}
+.about-title span {
+    color: #495057;
+}
+
+.about-description {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.about-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.about-badge {
+    background: #f0f4ff;
+    color: #4361ee;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #e0e7ff;
+}
+
+.about-hero-right {
+    flex: 0.8;
+}
+
+.about-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.about-info-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #f1f3f5;
+    transition: transform 0.2s;
+}
+.about-info-card:hover {
+    transform: translateY(-5px);
+}
+.about-info-card i {
+    font-size: 1.5rem;
+    color: #212529;
+}
+.about-info-card strong {
+    display: block;
+    font-size: 1rem;
+    color: #212529;
+}
+.about-info-card small {
+    color: #adb5bd;
+}
+
+.about-mission-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.mission-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.mission-header i {
+    font-size: 1.8rem;
+    color: #212529;
+}
+.mission-header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.about-mission-card p {
+    font-size: 1.1rem;
+    color: #495057;
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .about-hero {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+    .about-badges {
+        justify-content: center;
+    }
+}
+</style>
+{% endblock %}

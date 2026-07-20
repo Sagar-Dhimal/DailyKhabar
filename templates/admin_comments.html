@@ -1,0 +1,85 @@
+{% extends "admin_base.html" %}
+{% block admin_content %}
+<div class="admin-hero">
+  <div class="admin-hero-copy">
+    <span class="admin-kicker">Moderation Suite</span>
+    <h1>Reader Feedback</h1>
+    <p>Review and moderate user comments to maintain community standards.</p>
+  </div>
+</div>
+
+<div class="admin-panel admin-table-panel">
+  <div class="admin-table-toolbar">
+    <div class="admin-table-search">
+      <div class="admin-search">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Search comments...">
+      </div>
+    </div>
+  </div>
+  <div class="admin-responsive-table">
+    <table class="admin-data-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Target</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for c in comments %}
+      <tr>
+        <td><strong>{{ c.username }}</strong></td>
+        <td><a href="{{ url_for('article_detail', article_id=c.article_id) }}" class="small">#{{ c.article_id }}</a></td>
+        <td><div class="text-truncate" style="max-width: 300px;">{{ c.content }}</div></td>
+        <td>
+          <span class="admin-status-pill {% if c.status == 'approved' %}status-green{% elif c.status == 'rejected' %}status-red{% else %}status-yellow{% endif %}">
+            {{ c.status|capitalize }}
+          </span>
+        </td>
+        <td>
+          <div class="d-flex gap-2">
+            {% if c.status == 'pending' %}
+            <form action="/admin/comments/action" method="post" class="d-inline">
+              <input type="hidden" name="comment_id" value="{{ c.id }}">
+              <input type="hidden" name="action" value="approve">
+              <button type="submit" class="btn btn-sm btn-success">Approve</button>
+            </form>
+            <form action="/admin/comments/action" method="post" class="d-inline">
+              <input type="hidden" name="comment_id" value="{{ c.id }}">
+              <input type="hidden" name="action" value="reject">
+              <button type="submit" class="btn btn-sm btn-warning">Reject</button>
+            </form>
+            {% endif %}
+            <button class="btn btn-sm btn-outline-primary" onclick="document.getElementById('admin-reply-{{ c.id }}').classList.toggle('d-none')">
+              Reply
+            </button>
+            <form action="/admin/comments/action" method="post" class="d-inline">
+              <input type="hidden" name="comment_id" value="{{ c.id }}">
+              <input type="hidden" name="action" value="delete">
+              <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this comment?')">
+                <i class="bi bi-trash"></i>
+              </button>
+            </form>
+          </div>
+          
+          <!-- Admin Reply Form -->
+          <div id="admin-reply-{{ c.id }}" class="mt-2 d-none">
+            <form action="/admin/comments/reply" method="post">
+              <input type="hidden" name="parent_id" value="{{ c.id }}">
+              <div class="input-group input-group-sm">
+                <input type="text" name="content" class="form-control" placeholder="Write a reply...">
+                <button type="submit" class="btn btn-primary">Send</button>
+              </div>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
