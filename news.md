@@ -4,6 +4,7 @@ This script keeps a news portal's article database up to date by pulling fresh
 articles from RSS feeds, scraping full article text, tagging FIFA World Cup
 2026 coverage automatically, and inserting only genuinely new articles into
 MongoDB.
+It differs from regular news portal beacause of following reasons:
 
 ## What changed from the original version
 
